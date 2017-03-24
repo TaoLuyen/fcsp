@@ -24,8 +24,9 @@ gem "ffaker"
 gem "therubyracer"
 gem "simple_form"
 gem "gentelella-rails"
-gem "carrierwave"
-gem "mini_magick"
+gem 'carrierwave',             '0.11.2'
+gem 'mini_magick',             '4.5.1'
+gem 'fog',                     '1.38.0'
 gem "cancancan"
 gem "jquery-ui-rails", "~> 5.0.5"
 gem "active_model_serializers"
@@ -37,6 +38,8 @@ gem "ransack"
 gem "rails-i18n"
 gem "redcarpet"
 gem "cocoon"
+gem "rmagick"
+gem "paperclip"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 3.0"

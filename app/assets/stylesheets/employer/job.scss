@@ -1,0 +1,68 @@
+fieldset.input.required{
+  background-color: white;
+  border: solid 1px #EBEDEF;
+  height: auto;
+  margin: 0;
+  padding: 20px;
+
+  label {
+    color: #45494B;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 0px;
+    width: 240px;
+
+  }
+
+  .table {
+    margin-bottom: 0;
+
+    ul li {
+      line-height: 14px;
+      list-style-type: none;
+      margin-bottom: 5px;
+    }
+
+    .tab-hiring-type {
+      .checkbox-hiring {
+        width: 30px;
+      }
+    }
+
+    .tab-can-apply {
+      .radio-apply {
+        width: 30px;
+      }
+    }
+  }
+
+  h5 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .custab td {
+    border: none;
+  }
+
+  .button-right {
+    float: right;
+    text-align: right;
+  }
+}
+
+.action-create-job {
+  background-color: #EBEDEF !important;
+}
+
+ul.tab-nav:not(.tab-nav-lg) li:first-child {
+  margin-left: 0;
+}
+
+.require {
+  color: red;
+  font-weight: normal;
+}

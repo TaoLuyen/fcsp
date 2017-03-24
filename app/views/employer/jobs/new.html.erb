@@ -1,12 +1,29 @@
-<div class="postcontent nobottommargin col_last clearfix">
-  <div class="x_panel">
-    <div class="x_title">
-      <h2><%= t ".job_recruitment" %></h2>
-      <div class="clearfix"></div>
+<div class="container clearfix container-margin">
+  <div class="postcontent nobottommargin col_last clearfix">
+  <h3 style="margin-bottom: 0px;"><%= t ".job_recruitment" %></h3></br>
+  <div class="tabs tabs-alt tabs-tb clearfix" id="tab-1">
+    <ul class="tab-nav clearfix">
+      <li><a href="#tabs-2"><i class="icon-building norightmargin"></i>
+        <%= t ".job" %>
+      </a></li>
+      <li><a href="#tabs-3"><i class="icon-user norightmargin"></i>
+        <%= t ".members" %>
+      </a></li>
+      <li><a href="#tabs-5"><i class="icon-globe norightmargin"></i>
+        <%= t ".create_team_story" %>
+      </a></li>
+    </ul>
+    <div class="tab-content clearfix" id="tabs-2">
+      <%= form_for @job, url: employer_company_jobs_path do |f| %>
+        <%= render "info_hiring_type", f: f %>
+        <%= render "info_main", f: f %>
+      <% end %>
     </div>
-    <div class="x_content">
-      <br />
-      <%= render "form", url: employer_company_jobs_path %>
+    <div class="tab-content clearfix" id="tabs-3">
+    </div>
+    <div class="tab-content clearfix" id="tabs-4">
+    </div>
+    <div class="tab-content clearfix" id="tabs-5">
     </div>
   </div>
 </div>

@@ -1,0 +1,54 @@
+<fieldset class="input required member-important">
+  <table class="table custab">
+    <tr>
+      <h3 class="question-des-job" for="member-important">
+        <%= t ".question_des_job" %>
+      </h3>
+    </tr>
+    <tr>
+      <h5><%= t ".des_job_last" %></h5>
+    </tr>
+  </table>
+</fieldset>
+<fieldset class="input required job-title">
+  <table class="table custab">
+    <tr>
+      <td class="col-md-4">
+        <label class="required control-label">
+          <%= t ".title" %><span class="require">*</span>
+        </label>
+      </td>
+      <td>
+        <%= f.text_field :title, required: true, class: "form-control",
+          placeholder: t(".placeholder_title") %>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset class="input required job-des">
+  <table class="table custab">
+    <tr>
+      <td class="col-md-4">
+        <label class="required control-label">
+          <%= t ".description" %><span class="require">*</span>
+        </label>
+      </td>
+      <td>
+        <%= f.text_area :describe, required: true, class: "form-control",
+          rows: 5, placeholder: t(".placeholder_des") %>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset class="input required action-create-job">
+  <table class="table custab">
+    <tr>
+      <td class="col-md-3 button-right" style="float: right;">
+        <%= f.submit t(".public"), name: "public", class: "btn btn-success"%>
+        <%= f.submit t(".preview"), name: "preview",
+          class: "btn radius btn-primary" %>
+      </td>
+
+    </tr>
+  </table>
+</fieldset>

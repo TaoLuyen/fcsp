@@ -20,14 +20,8 @@
     </hgroup>
   </div>
   <div class="job-show-cover-wrapper">
-    <div class="cover-image">
-      <% if @job.images.present? %>
-        <%= link_to image_tag(@job.images.image_url,
-          size: Settings.jobs.image_size), @job %>
-      <% else %>
-        <%= link_to image_tag(Settings.jobs.image_url), @job %>
-      <% end %>
-    </div>
+    <%= link_to image_tag(@job.pictures.first.picture.url,
+      size: Settings.jobs.image_size), @job %>
     <ul class="job-metas pagination cf">
       <li class="published-date">
         <span> <i class="icon-time"></i>

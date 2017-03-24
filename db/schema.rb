@@ -417,6 +417,15 @@ ActiveRecord::Schema.define(version: 20170323043547) do
     t.index ["group_id"], name: "index_permissions_on_group_id", using: :btree
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.integer  "pictureable_id"
+    t.string   "pictureable_type"
+    t.string   "picture"
+    t.text     "caption"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "positions", force: :cascade do |t|
     t.string   "name"
     t.integer  "company_id"

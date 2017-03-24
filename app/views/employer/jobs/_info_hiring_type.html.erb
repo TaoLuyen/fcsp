@@ -1,0 +1,104 @@
+
+<fieldset class="input required job_looking_for">
+  <table class="table custab">
+    <tr>
+      <td class="col-md-4">
+        <label class="required control-label" for="job_looking_for">
+          <%= t ".looking_for" %><span class="require">*</span>
+        </label>
+      </td>
+      <td class="col-md-4">
+        <%= select_tag :name, options_from_collection_for_select(@hiring_types,
+          "id", "name"), class: "form-control col-md-4"%>
+      </td>
+      <td class="col-md-4"></td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset class="input required job_hiring_types">
+  <table class="table custab">
+    <tr>
+      <td class="col-md-4">
+        <label class="required control-label" for="job_hiring_type">
+        <%= t ".hiring_type" %><span class="require">*</span>
+        </label>
+      </td>
+      <td>
+        <table class="table custab tab-hiring-type">
+          <span>
+            <%= f.collection_check_boxes :hiring_type_ids, @hiring_types,
+              :id, :name do |hiring_type| %>
+              <%= hiring_type.label do %>
+                <tr>
+                  <td class = "col-md-4"><%= hiring_type.check_box %></td>
+                  <td><%= hiring_type.text %></td>
+                 </tr>
+              <% end %>
+            <% end %>
+          </span>
+        </table>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset class="input required job_can_apply">
+  <table class="table custab">
+    <tr>
+      <td class="col-md-4">
+        <label class="required control-label">
+          <%= t ".who_can_apply" %><span class="require">*</span>
+        </label>
+      </td>
+      <td>
+        <table class="table custab tab-can-apply">
+          <tr>
+            <td class="radio-apply">
+              <%= f.radio_button :who_can_apply, "0", :checked => true %>
+            </td>
+            <td><%= t ".everyone" %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.radio_button :who_can_apply, "1" %>
+            </td>
+            <td><%= t ".friends_om" %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.radio_button :who_can_apply, "2" %>
+            </td>
+            <td><%= t ".of_friends_om" %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</fieldset>
+<fieldset class="input required job_image">
+  <table class="table custab">
+    <tr>
+      <td class="col-md-4">
+        <%= f.fields_for :pictures do |ff| %>
+          <label class="required control-label" for="job_image">
+            <%= ff.label :picture %>
+          </label>
+          <div>
+            <%= ff.file_field :picture, class: "form-control" %>
+          </div>
+          <div>
+            <%= ff.hidden_field :pictureable_type, value: "Picture of job" %>
+          </div>
+          <div>
+            <label class="required control-label" for="job_image">
+              <%= ff.label :caption %>
+            </label>
+            <%= ff.text_field :caption, class: "form-control" %>
+          </div>
+        <% end %>
+
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table>
+</fieldset>

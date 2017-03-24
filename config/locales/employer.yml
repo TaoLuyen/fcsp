@@ -33,6 +33,9 @@ en:
         submit: "Post"
       new:
         job_recruitment: "Post job recruitment"
+        job: "Create job"
+        members: "Add members"
+        create_team_story: "Create team story"
       create:
         created_job: "Posted job recruitment"
         create_job_fail: "Fail to post job recruitment"
@@ -53,3 +56,21 @@ en:
         job_post_update_fail: "Failed to update post job"
       edit:
         edit_job: "Edit job"
+      info_main:
+        question_des_job: "Who is neccesary to your company?"
+        des_job_last: "This is the last section."
+        title: "Title"
+        description: "Description"
+        placeholder_title: "Join us to create a better workplace"
+        placeholder_des: "If you are a cool rocking young engineer and into
+          charities, I want to hear what you think about my new idea.
+          I will buy you a drink!"
+        public: "Public"
+        preview: "Preview"
+      info_hiring_type:
+        looking_for: "Looking for"
+        hiring_type: "Hiring type"
+        who_can_apply: "Who can apply"
+        everyone: "Everyone can apply"
+        friends_om: "Only friends of members"
+        of_friends_om: "Only friends of friends of members"
