@@ -8,8 +8,12 @@
         <%= select(:job, :job_id, @object.active_jobs.collect {|p| [ p.title, p.id ] },
           {include_blank: t(".all_jobs"), selected: params[:select]},
           class: "form-control select-job") %>
-        </div>
       </div>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-danger btn-delete-candidate">
+        <%= t ".delete_candidate" %>
+      </button>
     </div>
     <input type="hidden" id="company-id" value="<%= @company.id %>">
   </div>
@@ -42,6 +46,9 @@
                         <%= render "filter_process" %>
                         <%= t ".process" %>
                       </th>
+                      <th class="column-title col-action">
+                        <%= t ".action" %>
+                      </th>
                     </tr>
                   </thead>
                   <tbody id="list-candidates" class="show-list-candidates">
@@ -58,3 +65,4 @@
       </section>
     </div>
   </div>
+<div>

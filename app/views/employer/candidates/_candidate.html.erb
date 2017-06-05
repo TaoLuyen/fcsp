@@ -10,7 +10,9 @@
   <tr data-status="pagado">
     <td class="col-check">
       <div class="ckbox">
-        <input type="checkbox" id="checkbox<%= candidate.id %>">
+        <input type="checkbox" id="checkbox<%= candidate.id %>"
+          class="checkbox-candidate"
+          data-list-candidate-id="<%= candidate.id %>">
         <label for="checkbox<%= candidate.id %>"></label>
       </div>
     </td>
@@ -19,10 +21,9 @@
       <%= load_avatar_candidate candidate %>
     </td>
     <td class="col-username">
-      <span class="title"><b><%= candidate.user_name %></b>
-        <span class="pull-right job">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-      </span>
+      <p class="title"><b><%= candidate.user_name %></b></p>
       <p class="summary"><%= candidate.user_email %></p>
+      <p class="job-title"><%= candidate.job_title %></p>
     </td>
     <td class="col-interested">
       <span class="media-meta pull-left">
@@ -41,9 +42,11 @@
         <div class="popup-change-status"
           data-candidate-id="<%= candidate.id %>">
           <%= render "change_process", process: candidate.process %>
-          <%= render partial: "change_process", process: candidate.process %>
         </div>
       </span>
+    </td>
+    <td class="col-action">
+      <%= button_tag t(".delete"), id: candidate.id, class: "delete-candidate btn btn-danger btn-xs" %>
     </td>
   </tr>
 <% end %>

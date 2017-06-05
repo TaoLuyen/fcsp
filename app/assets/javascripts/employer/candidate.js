@@ -216,7 +216,78 @@ $(document).ready(function() {
       }
     });
   });
+
+  action_candidate.initialize();
 });
+
+var action_candidate = {
+  initialize: function() {
+    $('body').on('click', '.delete-candidate', function() {
+      var id = $(this).attr('id');
+      var arrchecked = [];
+      var params = {array_id: arrchecked};
+      arrchecked.push(id);
+      swal({
+        title: I18n.t('employer.candidates.destroy.confirm_delete'),
+        text: I18n.t('employer.candidates.destroy.mess_text'),
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: I18n.t('employer.candidates.destroy.confirm_text')
+      }).then(function() {
+        action_candidate.delete_candidate(params);
+      });
+    });
+
+    $('.btn-delete-candidate').click(function() {
+      swal({
+        title: I18n.t('employer.candidates.destroy.confirm_delete'),
+        text: I18n.t('employer.candidates.destroy.mess_text'),
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: I18n.t('employer.candidates.destroy.confirm_text')
+      }).then(function() {
+        var list_checkbox_candidate = $('#list-candidates').find('.checkbox-candidate');
+        var arrchecked = [];
+        var params = {array_id: arrchecked};
+
+        list_checkbox_candidate.each(function() {
+          if ($(this).is(':checked')) {
+            var id = $(this).attr('data-list-candidate-id');
+            arrchecked.push(id);
+          }
+        });
+        
+        if ( arrchecked.length > 0) {
+          action_candidate.delete_candidate(params);
+        } else {
+          swal('', I18n.t('employer.candidates.destroy.message_delete_candidate'), 'error');
+        } 
+      });
+    });
+  },
+
+  delete_candidate: function(params) {
+    var company_id = $('#company-id').val();
+    $.ajax({
+      dataType: 'json',
+      url: '/employer/companies/' + company_id + '/candidates',
+      method: 'DELETE',
+      data: params,
+      success: function(data) {
+        $('table tbody').html(data.html_candidate);
+        $('.pagination-bar').html(data.pagination_candidate);
+        swal(I18n.t('employer.candidates.destroy.success'));
+      },
+      error: function() {
+        swal(I18n.t('employer.candidates.destroy.fail'));
+      }
+    });
+  }
+};
 
 $(document).on('click.my', '.filter', function(e) {
   e.stopPropagation();

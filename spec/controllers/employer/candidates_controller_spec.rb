@@ -11,6 +11,8 @@ RSpec.describe Employer::CandidatesController, type: :controller do
     optional: {create: true, read: true, update: true, destroy: true},
     group_id: group.id}
   let!(:candidate){FactoryGirl.create :candidate, user_id: 1, job_id: job.id}
+  arr_id_success = [1, 2]
+  arr_id_fail = [998, 999]
 
   before :each do
     allow(controller).to receive(:current_user).and_return admin
@@ -40,6 +42,25 @@ RSpec.describe Employer::CandidatesController, type: :controller do
     it "render template successfully when using xhr request" do
       get :index, params: {company_id: company.id, select: job.id}, xhr: true
       expect(response).to render_template("employer/candidates/_candidate")
+    end
+  end
+
+  describe "DELETE #destroy" do
+    context "delete successfully" do
+      before{delete :destroy, params: {company_id: company, ids: arr_id_success}}
+      it{expect{response.to change(Candidate, :count).by -1}}
+    end
+
+    it "delete fail" do
+      allow_any_instance_of(Candidate).to receive(:destroy).and_return(false)
+      expect do
+        delete :destroy, params: {company_id: company, ids: arr_id_fail}
+      end.not_to change(Candidate, :count)
+    end
+
+    it "responds successfully with an HTTP 200 status code" do
+      delete :destroy, params: {company_id: company, ids: arr_id_success}, xhr: true
+      expect(response).to have_http_status 200
     end
   end
 end

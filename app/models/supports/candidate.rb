@@ -8,7 +8,7 @@ module Supports
     end
 
     def candidates
-      @company.candidates.eager_load(:user, :avatar).in_jobs(job_ids)
+      @company.candidates.eager_load(:user, :avatar, :job).in_jobs(job_ids)
     end
 
     def active_jobs

@@ -1,6 +1,7 @@
 class Candidate < ApplicationRecord
   belongs_to :user
   belongs_to :job, counter_cache: true
+  delegate :title, to: :job, allow_nil: true
 
   has_one :avatar, through: :user, class_name: Image.name, dependent: :destroy
 
@@ -19,5 +20,9 @@ class Candidate < ApplicationRecord
 
   scope :filter, ->(list_filter, sort_by, type) do
     where("#{type} IN (?)", list_filter).order "#{type} #{sort_by}"
+  end
+
+  scope :delete_candidate, ->list_candidate do
+    where("id IN (?)", list_candidate).destroy_all
   end
 end

@@ -48,14 +48,19 @@
     width: 6%;
   }
 
+  .col-action {
+    width: 5%;
+  }
+
   .col-username {
     width: 55%;
 
-    .job {
+    .job-title {
       border: 2px solid $border-job;
       border-radius: 2px;
       line-height: 20px;
       padding: 0 3px;
+      width: auto;
     }
   }
 
@@ -340,4 +345,8 @@
     box-shadow: 0 0 0;
     height: 30px;
   }
+}
+
+.btn-delete-candidate {
+  margin: 0 0 0 5px;
 }
