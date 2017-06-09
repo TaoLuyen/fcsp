@@ -261,7 +261,7 @@ var action_candidate = {
           }
         });
         
-        if ( arrchecked.length > 0) {
+        if (arrchecked.length > 0) {
           action_candidate.delete_candidate(params);
         } else {
           swal('', I18n.t('employer.candidates.destroy.message_delete_candidate'), 'error');

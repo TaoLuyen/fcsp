@@ -43,6 +43,13 @@ RSpec.describe Employer::CandidatesController, type: :controller do
       get :index, params: {company_id: company.id, select: job.id}, xhr: true
       expect(response).to render_template("employer/candidates/_candidate")
     end
+
+    it "get candidates with sort by of a job successfully" do
+      get :index, params: {company_id: company.id, select: job.id, sort: "ASC"}, xhr: true
+      expect(response).to be_success
+      expect(response).to have_http_status 200
+    end
+
   end
 
   describe "DELETE #destroy" do
