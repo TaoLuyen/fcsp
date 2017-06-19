@@ -138,5 +138,8 @@ RSpec.describe Employer::JobsController, type: :controller do
         xhr: true
       expect(response).to have_http_status 200
     end
+
+
+
   end
 end
